@@ -1,0 +1,24 @@
+{% extends 'shopapp/base.html' %}
+
+{% block title %}
+    Base shop-index
+{% endblock %}
+
+{% block body %}
+    <h1>Hello Shop-Index</h1>
+
+    <div>
+        <ul>
+            {% for name, price in products %}
+                <li>{{ name }} for {{ price }}$</li>
+                {% empty %}
+                    No products =(
+                {% endfor %}
+
+        </ul>
+    </div>
+
+
+
+
+{% endblock %}
