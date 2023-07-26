@@ -42,3 +42,7 @@ def orders_list(request: HttpRequest):
 
 
 # Create your views here.
+
+
+
+
