@@ -28,7 +28,7 @@ class ProductAdmin(admin.ModelAdmin):
     inlines = [
         OrderInline,
     ]
-    list_display = 'pk', 'name', 'price', 'description', 'discount', 'archived'
+    list_display = 'pk', 'name', 'price', 'description_short', 'discount', 'archived'
     list_display_links = 'pk', 'name'
     ordering = 'pk',
     search_fields = 'name', 'discount'
@@ -45,6 +45,10 @@ class ProductAdmin(admin.ModelAdmin):
         }),
     ]
 
+    def description_short(self, obj: Product):
+        if len(obj.description) < 48:
+            return obj.description
+        return obj.description[:48] + '...'
 
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
