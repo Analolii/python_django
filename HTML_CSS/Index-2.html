@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="utf-8">
+        <title>
+            Практическая работа
+        </title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+        <style>
+            * {
+                font-family: 'Roboto', sans-serif;
+            }
+
+            a {
+                color: black; 
+                text-decoration: none; 
+            }
+
+            a:hover {
+                color: #800000; 
+                text-decoration: underline; 
+            }
+
+            html, body {
+                margin: 0;
+                padding: 0;
+                background-color: #f6f7f9;
+            }
+
+            header {
+                height: 100px;
+                padding: 0 40px;
+            }
+
+            header a {
+                margin-right: 20px;
+            }
+
+            header span {
+                margin-right: 20px;
+            }
+
+            header > div {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;  
+            }
+
+            h1 {
+                font-size: 50px;
+                margin-bottom: 10px;
+            }
+
+            h2 {
+                font-size: 35px;
+            }
+
+            .phone {
+                margin-top: 50px;
+            }
+
+            .fixed-container {
+                max-width: 1000px;
+                height: 100%;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            section {
+                padding: 40px;
+            }
+
+
+            .first-block {
+                height: 400px;
+            }
+
+            .first-block > div {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: flex-start;
+                background-image: url("images/man.png");
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: right center;
+            }
+
+            .main-info {
+                margin: 30px 0 50px;
+            }
+
+            .main-info p {
+                margin-bottom: 50px;
+            }
+
+            .sevices {
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 10px;
+                height: 250px
+            }
+
+            .sevices > div {
+                width: 220px;
+                height: auto;
+                font-size: small;
+            }
+
+            .sevices img {
+                width: 120px;
+                height: 120px;
+                margin-bottom: 30px;
+            }
+
+            .example {
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 30px;
+            }
+
+            .example img {
+                width: 300px;
+                height: 200px;
+                border: 1px solid black;
+                border-radius: 15px;
+                margin-bottom: 10px;
+            }
+
+            .example > div {
+                width: 300px;
+                height: 250px;
+            }
+
+            .price-info {
+                background-color: #3d52fe;
+                color: white;
+                width: 1000px;
+                margin-right: auto;
+                margin-left: auto;
+            }
+
+            .price-info h2 {
+                width: 50%;
+                margin-bottom: 60px;
+                margin-top: 5px;
+            }
+
+            .price-info p {
+                width: 50%;
+                margin-bottom: 50px;
+            }
+
+            .light-button {
+                border: 1px solid black;
+                background-color: transparent;
+                margin-bottom: 50px;
+                
+            }
+
+            .dark-button {
+                background-color: #3d52fe;
+                border: 1px solid #3d52fe;
+                color: white;
+            }
+
+            button {
+                padding: 10px 30px;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            footer {
+                padding: 40px;
+                padding-bottom: 70px;
+            }
+
+            footer > div {
+                display: flex;
+                justify-content: space-between;
+                align-items: start;
+            }
+
+            footer img {
+                width: 15px;
+                height: 15px;
+                margin-left: 30px;
+                
+            }
+            .left-column {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: flex-start;
+                row-gap: 10px;
+            }
+
+            .contakts {
+                display: flex;
+                flex-direction: column;
+                row-gap: 10px;   
+                margin-left: 120px;
+            }
+
+            .links {
+                display: flex;
+                flex-direction: column;
+                align-items: end;
+                
+            }
+
+            .links button {
+                margin-bottom: 20px;
+            }
+
+            .icons {
+                width: 300px;
+                display: flex;
+                justify-content: right;
+            }
+
+            .popup-container {
+                background-color: #000000b3;
+                position: fixed;
+                width: 100%;
+                height: 100%;
+                display: none;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .popup {
+                background-color: white;
+                width: 300px;
+                height: 300px;
+                padding: 30px;
+                border-radius: 5px;
+                
+            }
+
+            .information {
+                display: flex;
+                flex-direction: column;
+                row-gap: 20px;
+                margin: auto;
+                align-items: center;
+                margin-top: 50px;
+            }
+
+            .reg-form__input {
+                width: 85%;
+                height: 30px;
+            }
+
+            .button-send {
+                display: flex;
+                justify-content: center;
+                margin-top: 50px;
+                
+            }
+
+        </style>
+        <script>
+        document.addEventListener("DOMContentLoaded", function(){
+            var container = document.querySelector(".popup-container");
+            var popupButtons = document.querySelectorAll(".open-popup");
+            for (let i = 0; i < popupButtons.length; i++) {
+                popupButtons[i].addEventListener('click', function(){
+                    container.style.display = 'flex';
+                });
+            }
+
+            container.addEventListener('click', function(event) {
+                if (event.target == container) {
+                    container.style.display = 'none';
+                }
+            });
+        });    
+        </script>
+    </head>
+    <body>
+        <div class="popup-container">
+            <form class="popup">
+                <div class="information">
+                    <input type="text" name="name" placeholder="Введите ваше имя" class="reg-form__input">
+                    <input type="email" placeholder="Введите ваш адрес электронной почты" class="reg-form__input">
+                </div>
+                <div class="button-send">
+                    <input type="submit" value="Отправить">
+                </div>
+            </form>
+        </div>
+        <header>
+            <div class="fixed-container">
+                <div>
+                    <a href="#">Услуги</a>
+                    <a href="#">Портфолио</a>
+                    <a href="#">Стоимость</a>
+                </div>
+                <div class="phone">
+                    <span>+7-909-999-55-44</span>
+                    <button class="light-button open-popup">Заказать звонок</button>
+                </div>
+            </div>
+        </header>
+        <section class="first-block">
+            <div class="fixed-container">
+                <div class="main-info">
+                    <h1>Дмитрий Алексеев</h1>
+                    <p>Frontend-разработчик и веб-верстальщик</p>
+                    <button class="dark-button open-popup">Узнать больше</button>
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="fixed-container">
+                <h2>Что я делаю:</h2>
+                <div class="sevices">
+                    <div>
+                        <img src="images/1.png" alt="">
+                        <p>Вёрстка лендинг-страниц и сайтов любой сложности</p>
+                    </div>
+                    <div>
+                        <img src="images/2.png" alt="">
+                        <p>Адаптивная верстка под все браузеры и устройства</p>
+                    </div>
+                    <div>
+                        <img src="images/3.png" alt="">
+                        <p>Frontend-разработка и программирование</p>
+                    </div>
+                    <div>
+                        <img src="images/4.png" alt="">
+                        <p>Исправление и доработка существующей вёрстки</p>
+                    </div>
+                </div>
+                <button class="light-button open-popup">Узнать стоимость</button>
+            </div>
+        </section>
+        <section>
+            <div class="fixed-container">
+                <h2>Примеры работ</h2>
+                <div class="example">
+                    <div>
+                        <img src="images/e1.png" alt="">
+                        Сайт психолога Веры Антоновой
+                    </div>
+                    <div>
+                        <img src="images/e2.png" alt="">
+                        Сайт магазина детской одежды
+                    </div>
+                    <div>
+                        <img src="images/e3.png" alt="">
+                        Сайт магазина "Рыболов"
+                    </div>
+                </div>
+                <button class="light-button open-popup">Заказать проект</button>
+
+            </div>
+        </section> 
+        <section class="price-info">
+            <div class="fixed-container">
+                <h2>Адаптивная вёрстка под все устройства и браузеры от 1000р. всего за 4 часа.
+                *</h2>
+                <p>
+                    * Срок и сложность могут отличаться от заявленных и рассчитываются индивидуально в зависимости от сложности задач
+                </p>
+            </div>
+        </section>
+        <footer>
+            <div class="fixed-container">
+                <div class="left-column">
+                    <a href="#">Услуги</a>
+                    <a href="#">Портфолио</a>
+                    <a href="#">Стоимость</a>
+                </div>    
+                <div class="contakts">
+                    <a href="#">dmitry@alekseev.com</a>
+                    <span>+7(499)995-77-55</span>
+                </div>
+                <div class="links">
+                    <button class="light-button open-popup">Заказать звонок</button>
+                    <div class="icons">
+                        <a href="#"><img src="images/fb.png" alt=""></a>
+                        <a href="#"><img src="images/vk.png" alt=""></a>
+                        <a href="#"><img src="images/you.png" alt=""></a>
+                        <a href="#"><img src="images/inst.png" alt=""></a>
+                        <a href="#"><img src="images/inst.png" alt=""></a>
+                    </div>
+                </div>   
+            </div>
+        </footer>
+    </body>
+</html>
