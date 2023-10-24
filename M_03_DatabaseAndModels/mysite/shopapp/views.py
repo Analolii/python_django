@@ -38,7 +38,7 @@ def orders_list(request: HttpRequest):
     context = {
         'orders': Order.objects.select_related('user').prefetch_related('products').all(),
     }
-    return render(request, 'shopapp/orders-list.html', context=context)
+    return render(request, 'shopapp/order_list.html', context=context)
 
 
 # Create your views here.
