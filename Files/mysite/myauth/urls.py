@@ -9,6 +9,10 @@ from .views import (
     get_session_view,
     MyLogoutView,
     AboutMeView,
+    ProfileDetailView,
+    ProfileListView,
+    ProfileCreateView,
+    ProfileUpdateView,
     RegisterView,
     FooBarView,
 )
@@ -28,6 +32,12 @@ urlpatterns = [
     # path("logout/", logout_view, name="logout"),
     path("logout/", MyLogoutView.as_view(), name="logout"),
     path("about-me/", AboutMeView.as_view(), name="about-me"),
+
+    path("profile-list/", ProfileListView.as_view(), name="profile_list"),
+    path("profile-details/<int:pk>/", ProfileDetailView.as_view(), name="profile_details"),
+    path("profile-update/<int:pk>/", ProfileUpdateView.as_view(), name="profile_update"),
+    path("profile-create/", ProfileCreateView.as_view(), name="profile_create"),
+
     path("register/", RegisterView.as_view(), name="register"),
 
     path("cookie/get/", get_cookie_view, name="cookie-get"),

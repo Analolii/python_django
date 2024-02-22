@@ -9,11 +9,25 @@
   <h1>User info</h1>
   {% if user.is_authenticated %}
     <h2>Detail</h2>
+    {% if user.profile.avatar %}
+    <p>{{user.profile.avatar}}</p>
+    {% else %}
+      no avatar
+    {% endif %}
     <p>Username: {{ user.username }}</p>
     <p>First name: {{ user.first_name }}</p>
     <p>Last name: {{ user.last_name }}</p>
     <p>Email: {{ user.email }}</p>
     <p>Bio: {{ user.profile.bio }}</p>
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{form.as_p}}
+      <button type="submit">Upload avatar</button>
+    </form>
+    <form action="{% url 'myauth:logout' %}" method="post">
+      {% csrf_token %}
+      <button type="submit">Logout</button>
+    </form>
   {% else %}
     <h2>User is anonymous</h2>
   {% endif %}
