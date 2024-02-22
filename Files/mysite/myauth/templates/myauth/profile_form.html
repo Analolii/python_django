@@ -1,0 +1,19 @@
+{% extends 'myauth/base.html' %}
+
+{% block title %}
+  Update profile #{{ profile.pk }}
+{% endblock %}
+
+{% block body %}
+  <h1>Create profile</h1>
+  <div>
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Create</button>
+    </form>
+  </div>
+  <div>
+    <a href="{% url 'myauth:profile_list' %}">Back to profiles list</a>
+  </div>
+{% endblock %}

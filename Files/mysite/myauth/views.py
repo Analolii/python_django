@@ -1,17 +1,62 @@
 from django.contrib.auth.decorators import login_required, permission_required, user_passes_test
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.mixins import UserPassesTestMixin
+from django.contrib.auth.models import AnonymousUser
 from django.contrib.auth.views import LogoutView
 from django.http import HttpRequest, HttpResponse, JsonResponse
 from django.contrib.auth import authenticate, login
 from django.urls import reverse_lazy
 from django.views import View
-from django.views.generic import TemplateView, CreateView
+from django.views.generic import TemplateView, CreateView, UpdateView, DetailView, ListView
 
 from .models import Profile
 
 
 class AboutMeView(TemplateView):
     template_name = "myauth/about-me.html"
+
+
+# class ProfileUpdateView(UpdateView):
+#     template_name = "myauth/about-me.html"
+#     model = Profile
+#     fields = ["avatar"]
+#     success_url = reverse_lazy("myauth:about-me")
+#
+#     def get_object(self):
+#         if not isinstance(self.request.user, AnonymousUser):
+#             return self.request.user.profile
+#         else:
+#             return None
+class ProfileCreateView(CreateView):
+    model = Profile
+    fields = 'user', 'bio', 'agreement_accepted', 'avatar'
+    success_url = reverse_lazy("myauth:profile-list")
+
+
+class ProfileUpdateView(UserPassesTestMixin, UpdateView):
+    def test_func(self):
+        if self.request.user.id == self.get_object().user.profile.id or self.request.user.is_staff:
+            return True
+
+    model = Profile
+    fields = ["avatar"]
+    template_name_suffix = "_update_form"
+
+    def get_success_url(self):
+        return reverse_lazy("myauth:profile_details", kwargs={"pk": self.object.pk}) #
+
+
+class ProfileDetailView(DetailView):
+    template_name = "myauth/profile-details.html"
+    model = Profile
+    context_object_name = "profile"
+
+
+class ProfileListView(ListView):
+    template_name = "myauth/profile-list.html"
+    model = Profile
+    context_object_name = "profiles"
+
 
 
 class RegisterView(CreateView):
