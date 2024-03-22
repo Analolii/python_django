@@ -1,0 +1,104 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-03-22 08:07+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: mysite/settings.py:129
+msgid "English"
+msgstr "English"
+
+#: mysite/settings.py:130
+msgid "Russian"
+msgstr "Russian"
+
+#: shopapp/models.py:16 shopapp/templates/shopapp/products-details.html:6
+msgid "Product"
+msgstr "Product"
+
+#: shopapp/models.py:17
+msgid "Products"
+msgstr "Products"
+
+#: shopapp/models.py:46
+msgid "Order"
+msgstr "Order"
+
+#: shopapp/models.py:47
+msgid "Orders"
+msgstr "Orders"
+
+#: shopapp/templates/shopapp/products-details.html:11
+msgid "Product "
+msgstr "Product"
+
+#: shopapp/templates/shopapp/products-details.html:13
+msgid "Description"
+msgstr ""
+
+#: shopapp/templates/shopapp/products-details.html:14
+msgid "Price"
+msgstr ""
+
+#: shopapp/templates/shopapp/products-details.html:15
+msgid "Discount"
+msgstr ""
+
+#: shopapp/templates/shopapp/products-details.html:17
+#: shopapp/templates/shopapp/products-details.html:19
+msgid "Archived"
+msgstr ""
+
+#: shopapp/templates/shopapp/products-details.html:17
+msgid "Yes"
+msgstr ""
+
+#: shopapp/templates/shopapp/products-details.html:19
+msgid "No"
+msgstr ""
+
+#: shopapp/templates/shopapp/products-details.html:25
+#, python-format
+msgid ""
+"\n"
+"    <h3>Uploaded one image</h3>\n"
+"    "
+msgid_plural ""
+"\n"
+"    <h3>Uploaded %(product_images_count)s images</h3>\n"
+"    "
+msgstr[0] ""
+msgstr[1] ""
+
+#: shopapp/templates/shopapp/products-details.html:37
+msgid "No images uploaded yet"
+msgstr ""
+
+#: shopapp/templates/shopapp/products-details.html:46
+#, python-format
+msgid ""
+"\n"
+"  <div>\n"
+"    <a href=\"%(update_url)s\">Update product</a>\n"
+"  </div>\n"
+"  <div>\n"
+"    <a href=\"%(delete_url)s\">Archive product</a>\n"
+"  </div>\n"
+"  <div>\n"
+"    <a href=\"%(products_list_url)s\">Back to products list</a>\n"
+"  </div>\n"
+msgstr ""
