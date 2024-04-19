@@ -2,7 +2,7 @@ from django.contrib.auth.models import User
 from django.db import models
 
 
-def product_preview_directory_path(instance: "Product", filename: str) -> str:
+def product_preview_directory_path(instance: "Product", filename: str) -> str: # путь к файлу
     return "products/product_{pk}/preview/{filename}".format(
         pk=instance.pk,
         filename=filename,
@@ -11,7 +11,7 @@ def product_preview_directory_path(instance: "Product", filename: str) -> str:
 
 class Product(models.Model):
     class Meta:
-        ordering = ["name", "price"]
+        ordering = ["name", "price"] # какие поля будут сортироваться
 
     name = models.CharField(max_length=100)
     description = models.TextField(null=False, blank=True)
