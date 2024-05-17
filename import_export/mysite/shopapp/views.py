@@ -1,8 +1,9 @@
 from timeit import default_timer
 
+from django.contrib.syndication.views import Feed
 from django.http import HttpResponse, HttpRequest, HttpResponseRedirect, JsonResponse
 from django.shortcuts import render, reverse
-from django.urls import reverse_lazy
+from django.urls import reverse, reverse_lazy
 from django.views import View
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
@@ -135,3 +136,21 @@ class ProductsDataExportView(View):
             for product in products
         ]
         return JsonResponse({"products": products_data})
+
+
+class LatestProductsFeed(Feed):
+    title = "Latest products"
+    descriptions = "Updates on changes and additions products"
+    link = reverse_lazy("shopapp:products_list")
+
+    def items(self):
+        return Product.objects.order_by("-pk")[:5]
+
+    def item_title(self, item):
+        return item.name
+
+    def item_description(self, item: Product):
+        return item.description[:50]
+
+    def item_link(self, item):
+        return reverse("shopapp:product_details", kwargs={"pk": item.pk})
